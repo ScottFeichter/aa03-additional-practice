@@ -1,7 +1,8 @@
 /*
     Write a function r2d2Speaks that takes in a series of 0s and 1s.
-    The function should console.log a 'beep' for a 0 followed by a pause of 400 ms and a 'boop' for a 1 followed by 800 ms.
-    
+    The function should console.log a 'beep' for a 0 followed by a pause of
+    400 ms and a 'boop' for a 1 followed by 800 ms.
+
     let code = [0, 1, 1, 0];
     r2d2Speaks(code);
         print 'beep'
@@ -15,16 +16,29 @@
 */
 
 function r2d2Speaks(code) {
-    // Your code here 
+  debugger;
+  //   code = JSON.parse(JSON.stringify(code));
+  if (code.length === 0) return "finished";
+
+  if (code[0] === 0) {
+    console.log("beep");
+    code.shift();
+    return setTimeout(r2d2Speaks, 400, code);
+  } else if (code[0] === 1) {
+    console.log("boop");
+    code.shift();
+    return setTimeout(r2d2Speaks, 800, code);
+  }
+
+  return "something went wrong";
 }
 
-let code = [0, 1, 1, 0];
-r2d2Speaks(code);
+// let code = [0, 0, 0, 1, 1, 0];
+// console.log(r2d2Speaks(code));
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
-    module.exports = r2d2Speaks;
+  module.exports = r2d2Speaks;
 } catch (e) {
-    module.exports = null;
+  module.exports = null;
 }
-
